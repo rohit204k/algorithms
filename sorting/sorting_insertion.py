@@ -1,27 +1,39 @@
 # Python program for implementation of Insertion Sort
-
-# Function to do insertion sort
-def insertionSort(arr):
-
-	# Traverse through 1 to len(arr)
-	for i in range(1, len(arr)):
-
-		key = arr[i]
-
-		# Move elements of arr[0..i-1], that are
-		# greater than key, to one position ahead
-		# of their current position
-		j = i-1
-		while j >= 0 and key < arr[j] :
-				arr[j + 1] = arr[j]
-				j -= 1
-		arr[j + 1] = key
+import random
 
 
-# Driver code to test above
-arr = [12, 11, 13, 5, 6]
-insertionSort(arr)
-for i in range(len(arr)):
-	print ("% d" % arr[i])
+# Function for Insertion sort
+def insertionSort(arr: list[int]):
+    n = len(arr)
 
-# This code is contributed by Mohit Kumra
+    for i in range(1, n):
+
+        key = arr[i]
+
+        # Move elements of arr[0..i-1], that are
+        # greater than key, to one position ahead
+        # of their current position
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+    return arr
+
+
+def main():
+
+    n = 10
+    A = random.choices(list(range(1, 100)), k=n)
+    print("Input Array, A = ")
+    print(A)
+    print()
+
+    B = insertionSort(A)
+    print("Insertion Sort - Sorted array")
+    print(B)
+
+
+if __name__ == "__main__":
+    main()
